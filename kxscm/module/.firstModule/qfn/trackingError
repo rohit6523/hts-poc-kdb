@@ -1,0 +1,8 @@
+// @fileOverview Enter a description here...
+// @returns {Type} Enter a return description here...
+{[assetList;benchmarkSym;timeDelta] 
+    d: .z.d - til(timeDelta); benchReturn:.firstModule.returnSeriesMultiple [enlist benchmarkSym;timeDelta]; 
+    select trackingError:sdev ((log .firstModule.ratios0 price) - benchReturn[benchmarkSym][`return]) by assetSymbol from assetTable 
+    where time in d, assetSymbol in assetList
+    
+ }

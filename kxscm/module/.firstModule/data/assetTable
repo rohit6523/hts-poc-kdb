@@ -1,0 +1,11 @@
+assetCount: 30000
+dateCount: 365*20
+finalCount: dateCount*assetCount
+asset: assetCount#enlist "ASSET_"
+id: 1 + til(assetCount)
+final_sym:`$(asset, '(string id))
+assetSym:final_sym [raze dateCount#/: til(assetCount)]
+final_date_range: finalCount#.z.d -til(dateCount)
+prices: (1+ finalCount?0.05)*100
+assetTable: ([] assetSymbol:assetSym; time:final_date_range; price: prices)
+assetTable: `time xasc assetTable

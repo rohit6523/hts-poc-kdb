@@ -1,0 +1,9 @@
+// @fileOverview Enter a description here...
+capmBeta: {[assetList;benchmarkSym;timeDelta] 
+    multipleReturn: returnSeriesMultiple[assetList; timeDelta]; 
+    benchReturn: returnSeriesMultiple[enlist benchmarkSym; timeDelta]; 
+    itermed: (benchReturn[benchmarkSym][`return] cor/: multipleReturn[;`return])% sdev benchReturn[benchmarkSym][`return]; 
+    assetVol: annualizedVolatility [assetList;timeDelta];
+    result:itermed*(assetVol[;`vol]%sqrt 365); 
+    finalResult: `assetSymbol`capmBeta! ((key result)[`assetSymbol]; value result); 
+    flip finalResult}

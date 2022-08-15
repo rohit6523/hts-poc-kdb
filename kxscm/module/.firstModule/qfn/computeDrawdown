@@ -1,0 +1,6 @@
+// @fileOverview Enter a description here...
+// @returns {Type} Enter a return description here...
+{[assetList;timeDelta] 
+    select drawDown: max (((maxs price) - price)% (maxs price)) by assetSymbol from assetTable 
+    where time in (.z.d - til(timeDelta)), assetSymbol in assetList}
+
